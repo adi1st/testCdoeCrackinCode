@@ -14,7 +14,7 @@ class SupplierController extends Controller
     public function index()
     {
         return view('supplier.index', [
-            'suppliers' => Supplier::latest()->filter(request(['kategori']))->simplePaginate(10)->withQueryString(),
+            'suppliers' => Supplier::latest()->filter(request(['kategori']))->paginate(10)->withQueryString(),
             'filters'   => Kategori::has('suppliers')->get(),
         ]);
     }
