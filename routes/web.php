@@ -5,11 +5,18 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SupplierKategoriController;
+use App\Models\Kategori;
+use App\Models\Produk;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {
-        return view('index');
+        return view('index', [
+            'produk'   => Produk::all()->count(),
+            'supplier' => Supplier::all()->count(),
+            'kategori' => Kategori::all()->count(),
+        ]);
     });
     Route::resource('/kategori', KategoriController::class);
     Route::resource('/supplier', SupplierController::class);
