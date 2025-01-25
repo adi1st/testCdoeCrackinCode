@@ -35,6 +35,8 @@
                             <td>{{ $kategori->deskripsi }}</td>
                             <td>
                                 <div class="flex space-x-2">
+                                    <button class="btn btn-sm btn-success"
+                                        onclick="detailModal('{{ $kategori->id }}','{{ $kategori->nama }}','{{ $kategori->deskripsi }}')">Detail</button>
                                     <a href="/kategori/{{ $kategori->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
                                     <form action="/kategori/{{ $kategori->id }}" method="post" class="d-inline">
                                         @method('delete')
@@ -58,4 +60,40 @@
         </table>
         {{ $kategoris->links() }}
     </div>
+
+    <dialog id="detailModal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <h3 class="text-2xl font-bold">Detail Kategori</h3>
+
+            <div class="mt-5">
+                <div class="form-control">
+                    <div class="mb-2">
+                        <span class="label-text">Nama Kategori</span>
+                        <h1 id="mdNama" class="text-lg font-bold"></h1>
+                    </div>
+                    <div class="">
+                        <span class="label-text">Deskripsi</span>
+                        <h1 id="mdDeskripsi" class="text-lg font-bold"></h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <a id="editLink" class="btn btn-primary">Edit</a>
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <script>
+        function detailModal(id, nama, deskripsi) {
+            document.getElementById('mdNama').innerText = nama;
+            document.getElementById('mdDeskripsi').innerText = deskripsi;
+            document.getElementById('editLink').href = `/kategori/${id}/edit`;
+            document.getElementById('detailModal').showModal();
+        }
+    </script>
 @endsection
