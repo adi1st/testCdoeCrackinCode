@@ -11,18 +11,18 @@
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                    <li><a href="/produk">Produk</a></li>
-                    <li><a href="/kategori">Kategori</a></li>
-                    <li><a href="/supplier">Supplier</a></li>
+                    <li><a href="/produk" class="{{ Request::is('produk*') ? 'active' : '' }}">Produk</a></li>
+                    <li><a href="/kategori" class="{{ Request::is('kategori*') ? 'active' : '' }}">Kategori</a></li>
+                    <li><a href="/supplier" class="{{ Request::is('supplier*') ? 'active' : '' }}">Supplier</a></li>
                 </ul>
             </div>
-            <a class="btn btn-ghost text-xl">TestCode</a>
+            <a class="btn btn-ghost text-xl" href="/">testCode.</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li><a href="/produk">Produk</a></li>
-                <li><a href="/kategori">Kategori</a></li>
-                <li><a href="/supplier">Supplier</a></li>
+                <li><a href="/produk" class="{{ Request::is('produk*') ? 'active' : '' }}">Produk</a></li>
+                <li><a href="/kategori" class="{{ Request::is('kategori*') ? 'active' : '' }}">Kategori</a></li>
+                <li><a href="/supplier" class="{{ Request::is('supplier*') ? 'active' : '' }}">Supplier</a></li>
             </ul>
         </div>
         <div class="navbar-end">
