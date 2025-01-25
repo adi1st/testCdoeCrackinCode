@@ -16,10 +16,27 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name'  => 'Test User',
-            'email' => 'test@example.com',
+            'name'  => 'Admin',
+            'email' => 'admin@example.com',
         ]);
 
-        Kategori::factory(20)->create();
+        Kategori::insert([
+            [
+                'nama'      => 'Elektronik',
+                'deskripsi' => 'Barang barang Elektronik',
+            ],
+            [
+                'nama'      => 'Sembako',
+                'deskripsi' => 'Barang barang Sembako',
+            ],
+            [
+                'nama'      => 'Alat tulis',
+                'deskripsi' => 'Barang barang Alat tulis',
+            ],
+            [
+                'nama'      => 'Mainan',
+                'deskripsi' => 'Barang barang Mainan',
+            ],
+        ]);
     }
 }
