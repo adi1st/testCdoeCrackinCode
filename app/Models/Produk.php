@@ -18,4 +18,10 @@ class Produk extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+
+    public function scopeFilter($query, $filters)
+    {
+        $query->when($filters['kategori'] ?? false, fn($query, $kategori) => $query->where('kategori_id', $kategori));
+        $query->when($filters['supplier'] ?? false, fn($query, $supplier) => $query->where('supplier_id', $supplier));
+    }
 }

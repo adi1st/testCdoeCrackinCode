@@ -17,14 +17,52 @@
     </div>
 
     <div class="overflow-x-auto mt-8">
+
+        <div class="my-1 me-1 grid justify-items-end">
+            <form class="flex items-center space-x-2" action="/produk">
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Kategori:</span>
+                    </div>
+                    <select class="select select-bordered select-sm" name="kategori">
+                        <option value="">All</option>
+                        @foreach ($filters as $produk)
+                            <option value="{{ $produk->kategori->id }}"
+                                {{ request('kategori') == $produk->kategori->id ? 'selected' : '' }}>
+                                {{ $produk->kategori->nama }}
+                            </option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Supplier:</span>
+                    </div>
+                    <select class="select select-bordered select-sm" name="supplier">
+                        <option value="">All</option>
+                        @foreach ($filters as $produk)
+                            <option value="{{ $produk->supplier->id }}"
+                                {{ request('supplier') == $produk->supplier->id ? 'selected' : '' }}>
+                                {{ $produk->supplier->nama }}
+                            </option>
+                        @endforeach
+                    </select>
+                </label>
+            </form>
+            <button type="submit" class="btn btn-sm mt-3">Apply</button>
+        </div>
+
         <table class="table table-zebra mb-5">
             <!-- head -->
             <thead>
                 <tr>
                     <th>No.</th>
                     <th>Nama Produk</th>
+                    <th>Kategori</th>
                     <th>Stok</th>
                     <th>Harga</th>
+                    <th>Supplier</th>
                     <th></th>
                 </tr>
             </thead>
@@ -34,10 +72,12 @@
                         <tr>
                             <th>{{ $loop->iteration }}</th>
                             <td>{{ $produk->nama }}</td>
+                            <td>{{ $produk->kategori->nama }}</td>
                             <td>{{ $produk->stok }}</td>
                             <td>Rp {{ $produk->harga }}</td>
+                            <td>{{ $produk->supplier->nama }}</td>
                             <td>
-                                <div class="flex space-x-2">
+                                <div class="flex justify-end space-x-2">
                                     <button class="btn btn-sm btn-success"
                                         onclick="detailModal(
                                     '{{ $produk->id }}',
@@ -61,7 +101,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="4" class="text-center">
+                        <td colspan="6" class="text-center">
                             <h1 class="text-2xl font-bold">Tidak ada data.</h1>
                         </td>
                     </tr>

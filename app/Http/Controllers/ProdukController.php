@@ -15,7 +15,8 @@ class ProdukController extends Controller
     public function index()
     {
         return view('produk.index', [
-            'produks' => Produk::latest()->paginate(10),
+            'produks' => Produk::latest()->filter(request(['kategori', 'supplier']))->simplePaginate(10)->withQueryString(),
+            'filters' => Produk::all(),
         ]);
     }
 

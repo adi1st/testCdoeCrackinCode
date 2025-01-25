@@ -17,6 +17,26 @@
     </div>
 
     <div class="overflow-x-auto mt-8">
+
+        <div class="my-1 me-1 grid justify-items-end">
+            <form class="flex space-x-2" action="/supplier">
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Kategori:</span>
+                    </div>
+                    <select class="select select-bordered select-sm" name="kategori">
+                        <option value="">All</option>
+                        @foreach ($filters as $ktg)
+                            <option value="{{ $ktg->id }}" {{ request('kategori') == $ktg->id ? 'selected' : '' }}>
+                                {{ $ktg->nama }}
+                            </option>
+                        @endforeach
+                    </select>
+                </label>
+            </form>
+            <button type="submit" class="btn btn-sm mt-3">Apply</button>
+        </div>
+
         <table class="table table-zebra mb-5">
             <!-- head -->
             <thead>
@@ -37,7 +57,7 @@
                             <td>+62 {{ $supplier->kontak }}</td>
                             <td>{{ $supplier->alamat }}</td>
                             <td>
-                                <div class="flex space-x-2">
+                                <div class="flex space-x-2 justify-end">
                                     <button class="btn btn-sm btn-success"
                                         onclick="detailModal(
                                         '{{ $supplier->id }}',
