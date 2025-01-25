@@ -34,7 +34,7 @@
                             <td>{{ $kategori->nama }}</td>
                             <td>{{ $kategori->deskripsi }}</td>
                             <td>
-                                <div class="flex space-x-2">
+                                <div class="flex space-x-2 justify-end">
                                     <button class="btn btn-sm btn-success"
                                         onclick="detailModal('{{ $kategori->id }}','{{ $kategori->nama }}','{{ $kategori->deskripsi }}')">Detail</button>
                                     <a href="/kategori/{{ $kategori->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
