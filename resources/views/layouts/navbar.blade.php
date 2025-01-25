@@ -26,9 +26,9 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <form action="/logout" method="post">
+            <form action="/logout" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-ghost">Logout</button>
+                <button type="submit">Logout</button>
             </form>
         </div>
     </div>
