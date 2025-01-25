@@ -11,6 +11,6 @@ class Supplier extends Model
 
     public function kategoris(): BelongsToMany
     {
-        return $this->belongsToMany(Kategori::class, 'kategori_suppliers', 'id_supplier', 'id_kategori');
+        return $this->belongsToMany(Kategori::class, 'kategori_suppliers', 'supplier_id', 'kategori_id');
     }
 }

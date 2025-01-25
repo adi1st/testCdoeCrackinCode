@@ -41,8 +41,6 @@ class SupplierController extends Controller
             'kategori_id.*' => 'exists:kategoris,id',
         ]);
 
-        // dd($validated);
-
         $supplier = Supplier::create($validated);
         $supplier->kategoris()->attach(array_unique($validated['kategori_id']));
 

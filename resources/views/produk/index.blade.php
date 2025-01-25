@@ -1,17 +1,18 @@
 @extends('layouts.main')
 
 @section('content')
+
     <div class="justify-between flex">
         <div class="">
             <div class="breadcrumbs text-sm">
                 <ul>
                     <li>Dashboard</li>
-                    <li>Kategori</li>
+                    <li>Produk</li>
                 </ul>
             </div>
-            <h1 class="text-2xl font-bold" id="title">List Kategori</h1>
+            <h1 class="text-2xl font-bold" id="title">List Produk</h1>
         </div>
-        <a href="/kategori/create"
+        <a href="/produk/create"
             class="btn bg-yellow-600 hover:bg-yellow-500 mb-6 lg:mb-6 text-white rounded-lg shadow-lg border-none">Tambah</a>
     </div>
 
@@ -21,22 +22,24 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Nama Kategori</th>
-                    <th>Deskripsi</th>
+                    <th>Nama Produk</th>
+                    <th>Stok</th>
+                    <th>Harga</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @if ($kategoris->count() > 0)
-                    @foreach ($kategoris as $kategori)
+                @if ($produks->count() > 0)
+                    @foreach ($produks as $produk)
                         <tr>
                             <th>{{ $loop->iteration }}</th>
-                            <td>{{ $kategori->nama }}</td>
-                            <td>{{ $kategori->deskripsi }}</td>
+                            <td>{{ $produk->nama }}</td>
+                            <td>{{ $produk->stok }}</td>
+                            <td>Rp {{ $produk->harga }}</td>
                             <td>
                                 <div class="flex space-x-2">
-                                    <a href="/kategori/{{ $kategori->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
-                                    <form action="/kategori/{{ $kategori->id }}" method="post" class="d-inline">
+                                    <a href="/produk/{{ $produk->id }}/edit" class="btn btn-sm btn-primary">Edit</a>
+                                    <form action="/produk/{{ $produk->id }}" method="post" class="d-inline">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-danger"
@@ -56,6 +59,6 @@
 
             </tbody>
         </table>
-        {{ $kategoris->links() }}
+        {{ $produks->links() }}
     </div>
 @endsection

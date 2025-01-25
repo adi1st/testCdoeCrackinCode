@@ -35,7 +35,7 @@
                 <div
                     class="flex items-center gap-2 input input-bordered w-full max-w-xs @error('kontak') is-invalid @enderror">
                     +62
-                    <input name="kontak" value="{{ old('kontak') }}" type="number" placeholder="89xxxxxxxxxx"
+                    <input name="kontak" value="{{ old('kontak') }}" type="text" placeholder="89xxxxxxxxxx"
                         class="grow" required />
                 </div>
                 @error('kontak')
@@ -62,14 +62,13 @@
                 <h1>Kategori produk supplier</h1>
                 <ul id="kategori-list" class="mt-2">
                     <li class="mb-2 kategori-item">
-                        <label for="" class="form-control">
-                            <select name="kategori_id[]" class="select select-bordered w-full max-w-xs">
-                                <option disabled selected>Pilih kategori</option>
-                                @foreach ($kategoris as $kategori)
-                                    <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
-                                @endforeach
-                            </select>
-                        </label>
+                        <select name="kategori_id[]" class="select select-bordered w-full max-w-xs">
+                            <option disabled selected>Pilih kategori</option>
+                            @foreach ($kategoris as $kategori)
+                                <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+                            @endforeach
+                        </select>
+                        <button type="button" class="btn btn-error ms-1 hapus-kategori">Hapus</button>
                     </li>
                 </ul>
                 <a class="btn btn-xs" id="tambah-kategori">+ Tambah</a>

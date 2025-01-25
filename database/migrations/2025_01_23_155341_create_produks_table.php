@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->bigInteger('harga');
             $table->bigInteger('stok');
-            $table->foreignId('id_supplier')->constrained('suppliers')->onDelete('cascade');
-            $table->foreignId('id_kategori')->constrained('kategoris')->onDelete('cascade');
+            $table->foreignId('supplier_id')->constrained('suppliers')->onDelete('cascade');
+            $table->foreignId('kategori_id')->constrained('kategoris')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@
     </div>
 
     <div class="overflow-x-auto mt-8">
-        <table class="table table-zebra">
+        <table class="table table-zebra mb-5">
             <!-- head -->
             <thead>
                 <tr>
